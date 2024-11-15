@@ -1,0 +1,52 @@
+﻿@model ApplicationUserVM
+
+@{
+    ViewBag.pageTitle = "Account Management";
+    ViewBag.CardTitle = "Edit Profile";
+    Layout = "_Dashboard";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-area="Customer" asp-controller="Home" method="post" enctype="multipart/form-data">
+            <input asp-for="ApplicationUser.Id" hidden />
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="ApplicationUser.Name"></label>
+                <input asp-for="ApplicationUser.Name" class="form-control" />
+                <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ApplicationUser.Email"></label>
+                <input asp-for="ApplicationUser.Email" class="form-control" />
+                <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ApplicationUser.PhoneNumber"></label>
+                <input asp-for="ApplicationUser.PhoneNumber" class="form-control" />
+                <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ApplicationUser.Code"></label>
+                <input asp-for="ApplicationUser.Code" readonly class="form-control" />
+                <span asp-validation-for="ApplicationUser.Code" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="index" asp-controller="Home" class="btn btn-warning">Back To Index</a>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

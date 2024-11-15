@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Contact>
+
+@{
+    ViewBag.pageTitle = "Contact Management";
+    ViewBag.CardTitle = "View Contactes";
+}
+
+<div>
+    <a class="btn btn-primary" href="/Admin/Contact/Create">Create New Contact </a>
+</div>
+
+<br />
+
+<table class="table table-hover" width="100%">
+    <tr>
+        <td>Name </td>
+        <td>Phone</td>
+        <td>Address</td>
+        <td>Notes</td>
+        <td>Actions </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Phone</td>
+            <td>@item.Address</td>
+            <td>@item.Notes</td>
+           
+            <td>
+
+            <a class="btn btn-success" href="/Admin/Contact/Edit/@item.Id">Edit</a>
+
+            <a class="btn btn-danger" href="/Admin/Contact/Delete/@item.Id">Delete</a>
+
+            </td>
+        </tr>
+    }
+</table>
+
